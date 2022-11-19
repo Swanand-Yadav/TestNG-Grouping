@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="suite">
+	<test name="test_1"> 
+		<groups>
+			<define name="dailyBuild"> <!-- Group-1 -->
+				<include name="sanity"/>
+				<include name="functional"/>
+			</define>
+			<define name="weeklyBuild"> <!-- Group-2 -->
+				<include name="sanity"/>
+				<include name="functional"/>
+				<include name="regression"/>
+				<include name="smoke"/>
+			</define>
+			<run>
+				<include name="All"/> <!-- Here calling any groups or group which want to run  -->
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+	<test name="test_2">
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>

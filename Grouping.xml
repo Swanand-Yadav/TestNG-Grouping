@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="suite">
+	<groups>
+		<run>
+			<include name="Windows.*"/> <!-- At suite level -->
+		</run>
+	</groups>
+	
+	<test name="test_1"> 
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+		</classes>
+	</test>
+	
+	<test name="test_2">
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+<!-- 
+
+For Test Level Grouping:+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	In above first stage classes will check and in that classes all test cases will execute as 
+	per grouping which mentioned in groups tag which is stage second. And in group we can exclude 
+	or include also. For test level grouping add groups/run tag just behind test tag it mean inside
+	the test tag.
+	
+	<suite name="suite">
+	<test name="test_1">
+		<groups>
+			<run>
+				<include name="sanity"/>  OR <include name="smoke"/>  
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+For Exclusion(Exclude) level grouping:+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	<suite name="suite">
+	<test name="test_1">
+		<groups>
+			<run>
+				<include name="sanity"/> 
+				<exclude name="regression"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+For Meta(group or groups) level grouping:++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	<suite name="suite">
+	<test name="test_1">
+		<groups>
+			<define name="dailyBuild">
+				<include name="sanity"/>
+				<include name="functional"/>
+			</define>
+			<define name="weeklyBuild">
+				<include name="sanity"/>
+				<include name="functional"/>
+				<include name="regression"/>
+				<include name="smoke"/>
+			</define>
+			<run>
+				<include name="dailyBuild"/>  OR <include name="weeklyBuild"/>  
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+For Partial level grouping: (class level) +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	In that case you need to mention @Test(groups={"All"}) at class level and mention this in XML 
+	file.( *All* is user defined variable)
+	
+	<suite name="suite">
+	<test name="test_1">
+		<groups>
+			<run>
+				<include name="All"/> 
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+For suite level grouping:++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+
+	In that case all test tag will come under the one group which is mentioned at suite level so 
+	which is mentioned in group all will be executed from all tests tag.
+	
+	<suite name="suite">
+	<groups>
+		<run>
+			<include name="sanity"/> OR Here calling which want to run from below 
+		</run>
+	</groups>
+	
+	<test name="test_1"> 
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+		</classes>
+	</test>
+	<test name="test_2">
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+For suite + test level grouping:+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	In that case just focus one thing where within any tag if we mention groups tag followed by 
+	run tag then this tag level grouping we can say e.g. If we mention group/run tag within test
+	then we can say test level grouping.
+	
+	<suite name="suite">
+	<groups>
+		<run>
+			<include name="sanity"/>  At suite level 
+		</run>
+	</groups>
+	
+	<test name="test_1"> 
+		<groups>
+			<run>
+				<include name="smoke"/>  At first test level 
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+		</classes>
+	</test>
+	
+	<test name="test_2">
+		<groups>
+			<run>
+				<include name="functional"/>  At second test level 
+			</run>
+		</groups>
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+
+For regular expression level grouping:+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	<suite name="suite">
+	<groups>
+		<run>
+			<include name="Windows.*"/> 
+		</run>
+	</groups>
+	
+	<test name="test_1"> 
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test1"/>
+		</classes>
+	</test>
+	
+	<test name="test_2">
+		<classes>
+			<class name="Grouping_TestNG.Grp_TestNG.Test2"/>
+		</classes>
+	</test>
+</suite>
+	
+ -->
+ 
+ 
